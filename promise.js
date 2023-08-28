@@ -1,7 +1,7 @@
 
 let val1=Math.ceil(Math.random()*10);
 
-const promise1=new Promise((resolve,reject)=>{
+const validvalue=new Promise((resolve,reject)=>{
 
     if(val1>5)
     {
@@ -14,7 +14,7 @@ const promise1=new Promise((resolve,reject)=>{
 })
 
 
-promise1.then(result=>
+validvalue.then(result=>
     {
           console.log(result);
     }).catch(Error=>

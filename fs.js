@@ -1,5 +1,6 @@
 
 
+
 const fs=require('fs');
 const directory='fs_assingment';
 const content='this a a sample content for file';
@@ -13,7 +14,7 @@ async function newfile(filename)
   
 
 
-    const promise2=new Promise((resolve,reject)=>{
+    const createfile=new Promise((resolve,reject)=>{
 
         if(fs.existsSync(directory))
         {
@@ -51,7 +52,7 @@ async function newfile(filename)
 
 
             fs.writeFileSync(directory+'/'+filename,content);
-                const a=fs.readFileSync(directory+'/'+filename,'utf-8');
+                //const a=fs.readFileSync(directory+'/'+filename,'utf-8');
     
     
             
@@ -68,7 +69,8 @@ async function newfile(filename)
 
     
     
-   const result=await promise2;
+   const result=await createfile;
+
 
 return result;
 
@@ -78,25 +80,11 @@ return result;
 
 
 
-newfile('ind5.html').then(result=>{
+newfile('samplefile.txt').then(result=>{
     console.log(result);
 }).catch(err=>{
     console.log(err);
 })
-
-
-
-
-
-
-
-        
-      
-
-
-
-
-
 
 
 

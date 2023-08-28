@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -10,6 +11,8 @@ app.use(bodyparser.urlencoded({extended:true}));
 //get request for query and path param;
 
 app.get('/user/:route_param', (req, res) => {
+
+  console.log('get request is called with the specified query and path param\n');
 
   const pathParam = req.params.route_param;
   const queryParam = req.query.query_param;
@@ -58,28 +61,35 @@ const users=[
 
 app.post('/users',(req,res)=>{
 
-     const data=req.body;
+
+  console.log('post request has been called');
+
+     const newUser=req.body;
      
+     console.log("data before posting\n")
+     console.log(users)
 
 
-     const present=users.some(ele=>{
+     const isPresent=users.some(ele=>{//to find already existing users
 
-      return ele.name == data.name
+      return ele.name == newUser.name
     
      })
 
       //  console.log(users);   for debugging purposes
-      //  console.log(data);
+      //  console.log(newUser);
 
 
-     if(present || data.name === "")
+     if(isPresent || newUser.name === "")
      {
           res.send({error:"the user is already present or username is not provided"});
+          console.log('error : the user is already present or username is not provided\n');
      }
      else{
-         users.push(data);
+         users.push(newUser);
          res.json(users);
-         console.log("post operation is successful");
+         console.log("post operation is successful\n");
+         console.log(users);
      }
 
 
@@ -95,5 +105,6 @@ app.post('/users',(req,res)=>{
 
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port} and waiting for request`);
+  console.log(`Server is running on port ${port} and waiting for request\n`);
 });
+
